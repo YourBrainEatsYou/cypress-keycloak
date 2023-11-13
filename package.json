@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "author": "yourbraineatsyou",
   "main": "dist/index.js",
-  "name": "@ybey/cypress-keycloak",
+  "name": "@yourbraineatsyou/cypress-keycloak",
   "module": "dist/index.esm.js",
   "description": "Cypress commands for Keycloak",
   "repository": {
