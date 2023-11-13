@@ -13,6 +13,7 @@ Cypress.Commands.add(
     otp_secret,
     otp_credential_id = null,
     kc_idp_hint,
+    scope = 'openid',
   }) =>
     cy
       .request({
@@ -21,7 +22,7 @@ Cypress.Commands.add(
           client_id,
           redirect_uri,
           kc_idp_hint,
-          scope: 'openid',
+          scope,
           state: createUUID(),
           nonce: createUUID(),
           response_type: 'code',

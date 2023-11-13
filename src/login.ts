@@ -49,6 +49,7 @@ Cypress.Commands.add(
     path_prefix = 'auth',
     kc_idp_hint,
     code_challenge_method,
+    scope = 'openid'
   }) => {
     const pkce: Record<string, string> = {};
     if (code_challenge_method && code_challenge_method === 'S256') {
@@ -73,7 +74,7 @@ Cypress.Commands.add(
           client_id,
           redirect_uri,
           kc_idp_hint,
-          scope: 'openid',
+          scope,
           state: createUUID(),
           nonce: createUUID(),
           response_type: 'code',

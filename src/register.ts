@@ -16,6 +16,7 @@ Cypress.Commands.add(
     firstName,
     lastName,
     additionalAttributes,
+    scope = 'openid',
   }) =>
     cy
       .request({
@@ -26,7 +27,7 @@ Cypress.Commands.add(
           client_id,
           redirect_uri,
           kc_idp_hint,
-          scope: 'openid',
+          scope,
           state: createUUID(),
           nonce: createUUID(),
           response_type: 'code',
