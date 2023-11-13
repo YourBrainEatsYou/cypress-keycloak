@@ -108,7 +108,6 @@ Cypress.Commands.add(
       })
       .then(response => {
         const code = getAuthCodeFromLocation(response.headers["location"]);
-        console.log(code);
 
         cy.request({
           method: "post",
