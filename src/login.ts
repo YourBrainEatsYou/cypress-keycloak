@@ -37,6 +37,11 @@ function generateRandomString(len: number, alphabet: string): string {
   return String.fromCharCode.apply(null, chars);
 }
 
+export function getAuthCodeFromLocation(location: string): string | undefined {
+  const params = new URLSearchParams(location);
+  return params.get('code') || '';
+}
+
 Cypress.Commands.add(
   'login',
   ({
@@ -100,6 +105,25 @@ Cypress.Commands.add(
               password,
             },
           });
+      })
+      .then(response => {
+        const code = getAuthCodeFromLocation(response.headers["location"]);
+        console.log(code);
+
+        cy.request({
+          method: "post",
+          url: `${root}${
+            path_prefix ? `/${path_prefix}` : ''
+          }/realms/${realm}/protocol/openid-connect/token`,
+          body: {
+            client_id,
+            redirect_uri,
+            code: code,
+            grant_type: "authorization_code"
+          },
+          form: true,
+          followRedirect: false
+        }).its("body").as('token');
       });
-  }
-);
+  });
+
