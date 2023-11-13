@@ -1,9 +1,9 @@
 {
   "license": "MIT",
   "version": "1.0.0",
-  "author": "babangsund",
+  "author": "yourbraineatsyou",
   "main": "dist/index.js",
-  "name": "cypress-keycloak",
+  "name": "@ybey/cypress-keycloak",
   "module": "dist/index.esm.js",
   "description": "Cypress commands for Keycloak",
   "repository": "git://github.com/yourbraineatsyou/cypress-keycloak.git",
